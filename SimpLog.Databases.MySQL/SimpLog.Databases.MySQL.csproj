@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <PackageId>SimpLog.Databases.MySQL</PackageId>
+    <Title>SimpLog.Databases.MySQL</Title>
+    <Version>0.0.1-alpha1</Version>
+    <Authors>Georgi Chekanov</Authors>
+    <Company>Georgi Chekanov</Company>
+    <Product>SimpLog</Product>
+    <Description>Log from server into MySQL database.</Description>
+    <Copyright>Copyright (c) Georgi Chekanov 2023</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>log, mysql, log, simple log, database log</PackageTags>
+    <PackageReleaseNotes>- separated functionality for MySQL from SimpLog</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
