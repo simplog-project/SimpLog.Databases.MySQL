@@ -13,11 +13,11 @@ receive logs via email with the proper configuration.
 | Error | Log every error condition at this level. That can be API calls that return errors or internal error conditions. |
 | Fatal | Too bad, it’s doomsday. Use this very scarcely, this shouldn’t happen a lot in a real program. Usually logging at this level signifies the end of the program. For instance, if a network daemon can’t bind a network socket, log at this level and exit is the only sensible thing to do. |
 
-# Features of SimpLog.Databases.MSSQL
+# Features of SimpLog.Databases.MySQL
 
 | Features | Description |
 | ----- | ----- |
-| &#128218; Log into database | With SimpLog you can save logs into a database. It is possible to save it in MSSql, MySql, PostgreSql and MongoDb. Have in mind, that if the tables are not created, they will be created automatically in the database from the connection string in SimpLog:Database_Configuration:Connection_String |
+| &#128218; Log into database | With SimpLog you can save logs into a database. It is possible to save it in MySql. Have in mind, that if the tables are not created, they will be created automatically in the database from the connection string in SimpLog:Database_Configuration:Connection_String |
 
 
 # &#128218; Database structure for logging into a database
@@ -66,7 +66,7 @@ Nothing needed
 
 **In Controller**
 ```
-private SimpLog.Databases.MSSQL.Services.SimpLogServices.SimpLog _simpLog = new SimpLog.Databases.MSSQL.Services.SimpLogServices.SimpLog();
+private SimpLog.Databases.MySQL.Services.SimpLogServices.SimpLog _simpLog = new SimpLog.Databases.MySQL.Services.SimpLogServices.SimpLog();
 ```
 
 and call the log like
@@ -76,27 +76,27 @@ _simpLog.Trace("place your message here");
 
 options are as follows
 ```
-_simpLog.Info({1}, {2}, {3}); 
+_simpLog.Info({1}, {2});
 ```
 and only {1} is required
 
 | Option | Short Description | Full Description |
 | ----- | ----- | ----- |
 | {1} | Message | The message you want to log. |
-| {2} | Save file type | There are three types of save type. See the table below |
-| {3} | Save into database | Disable or enable saving into database. |
+| {2} | Save into database | Disable or enable saving into database. |
 
 **In simplog.json**
 
 Create simplog.json file in the root folder of your startup project. On the same level where is appsettings.json. Please have in mind that every configuration in simplog.json is optional ☺️
 
+N.B! You should create first the database. The fields will be created automatically :)
+
 ```
-  "SimpLog": {                              -> all of the below fields are optional
+  {                              -> all of the below fields are optional
     "Database_Configuration": {             -> Database configurations
       "Connection_String": string,          -> Depending on database type, use the correct connection string.
-      "Global_Database_Type": string,       -> The type of a database. Please spell it correctly "MSSql" or "MySql" or "Postgre" or "MongoDb". N.B! Be carefull with spelling!
-      "Use_OleDB": bool,                    -> Still not implementet, not any functionality here.
-      "Global_Enabled_Save": bool           -> You can globally disable or enable saving into database. Default value is
+      "Global_Database_Type": string,       -> The type of a database. Set it to "MySql" N.B! Be carefull with spelling!
+      "Global_Enabled_Save": bool           -> You can globally disable or enable saving into database. Default value is true
     },
     "LogType": {
       "Trace": {                            -> TYPE OF LOG == Trace.

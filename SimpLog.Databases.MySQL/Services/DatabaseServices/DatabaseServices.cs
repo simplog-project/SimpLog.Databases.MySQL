@@ -36,9 +36,7 @@ namespace SimpLog.Databases.MySQL.Services.DatabaseServices
             MySqlCommand cmd = new MySqlCommand(null, connection);
 
             DatabaseMigrations.CreateMySqlIfNotExists(connection, cmd);
-            
-            connection.Open();
-            
+                        
             int EmailID = 0;
 
             string query = string.Empty;
