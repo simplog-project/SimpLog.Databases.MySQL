@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <PackageId>SimpLog.Databases.MySQL</PackageId>
     <Title>SimpLog.Databases.MySQL</Title>
-    <Version>0.0.1-alpha1</Version>
+    <Version>0.0.1-alpha2</Version>
     <Authors>Georgi Chekanov</Authors>
     <Company>Georgi Chekanov</Company>
     <Product>SimpLog</Product>
@@ -16,6 +16,7 @@
     <PackageReleaseNotes>- separated functionality for MySQL from SimpLog</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <AssemblyName>SimpLog.Databases.MySQL</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="README.md">
+    <None Include="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
