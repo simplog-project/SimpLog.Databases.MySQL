@@ -20,24 +20,27 @@ namespace SimpLog.Databases.MySQL.Services.SimpLogServices
         /// <param name="log_file_name"></param>
         /// <returns></returns>
         public async Task Trace(string message, bool? saveInDatabase = true)
-            => await _fileService.Save(message, LogType.Trace, saveInDatabase);
+            => await _fileService.Save(message, LogType.Trace, saveInDatabase, string.Empty, false, string.Empty, string.Empty);
 
         public async Task Debug(string message, bool? saveInDatabase = true)
-            => await _fileService.Save(message, LogType.Debug, saveInDatabase);
+            => await _fileService.Save(message, LogType.Debug, saveInDatabase, string.Empty, false, string.Empty, string.Empty);
 
         public async Task Info(string message, bool? saveInDatabase = true)
-            => await _fileService.Save(message, LogType.Info, saveInDatabase);
+            => await _fileService.Save(message, LogType.Info, saveInDatabase, string.Empty, false, string.Empty, string.Empty);
         
         public async Task Notice(string message, bool? saveInDatabase = true)
-            => await _fileService.Save(message, LogType.Notice, saveInDatabase);
+            => await _fileService.Save(message, LogType.Notice, saveInDatabase, string.Empty, false, string.Empty, string.Empty);
 
         public async Task Warn(string message, bool? saveInDatabase = true)
-            => await _fileService.Save(message, LogType.Warn, saveInDatabase);
+            => await _fileService.Save(message, LogType.Warn, saveInDatabase, string.Empty, false, string.Empty, string.Empty);
 
         public async Task Error(string message, bool? saveInDatabase = true)
-            => await _fileService.Save(message, LogType.Error, saveInDatabase);
+            => await _fileService.Save(message, LogType.Error, saveInDatabase, string.Empty, false, string.Empty, string.Empty);
 
         public async Task Fatal(string message, bool? saveInDatabase = true)
-            => await _fileService.Save(message, LogType.Fatal, saveInDatabase);
+            => await _fileService.Save(message, LogType.Fatal, saveInDatabase, string.Empty, false, string.Empty, string.Empty);
+
+        public async Task SaveIntoMySQL(string message, bool? saveInDatabase = true, LogType logType = LogType.Info, string? saveType = null, bool? isSentEmail = null, bool? isSavedIntoFile = false, string? path_to_save_log = null, string? log_file_name = null)
+            => await _fileService.Save(message, logType, saveInDatabase, saveType, isSentEmail, path_to_save_log, log_file_name);
     }
 }

@@ -13,24 +13,15 @@ namespace SimpLog.Databases.MySQL.Services.DatabaseServices
         /// <summary>
         /// Depending on the name of the DB, goes to the function for that stuff.
         /// </summary>
-        /// <param name="DbName"></param>
         /// <param name="storeLog"></param>
-        /// <param name="isEmailSend"></param>
-        /// <param name="saveInDatabase"></param>
-        public static void SaveIntoDatabase(string DbName, StoreLog storeLog, bool? isEmailSend, bool? saveInDatabase)
-        {
-            if(DbName.Equals(Global_Database_Type.MySql.DisplayName()))
-                InsertIntoMySql(storeLog, isEmailSend);
-            else
-                return;
-        }
-
+        public static void SaveIntoDatabase(StoreLog storeLog)
+            => InsertIntoMySql(storeLog);
+         
         /// <summary>
         /// Insert log into MySql database.
         /// </summary>
         /// <param name="storeLog"></param>
-        /// <param name="isEmailSend"></param>
-        public static void InsertIntoMySql(StoreLog storeLog, bool? isEmailSend)
+        public static void InsertIntoMySql(StoreLog storeLog)
         {
             MySqlConnection connection = new MySqlConnection(conf.Database_Configuration.Connection_String);
             MySqlCommand cmd = new MySqlCommand(null, connection);
@@ -49,7 +40,7 @@ namespace SimpLog.Databases.MySQL.Services.DatabaseServices
             cmd.Parameters.AddWithValue("@Log_Created", storeLog.Log_Created);
             cmd.Parameters.AddWithValue("@Log_FileName", storeLog.Log_FileName);
             cmd.Parameters.AddWithValue("@Log_Path", storeLog.Log_Path);
-            cmd.Parameters.AddWithValue("@Log_SendEmail", isEmailSend);
+            cmd.Parameters.AddWithValue("@Log_SendEmail", storeLog.Log_SendEmail);
             cmd.Parameters.AddWithValue("@Email_ID", EmailID);
             cmd.Parameters.AddWithValue("@Saved_In_Database", DateTime.UtcNow.ToString());
 

@@ -1,6 +1,5 @@
 # What is SimpLog
-Simple and very flexible tool for development with .NET Core. Saves logs to a file, or a database where you want. Also gives opportunity to 
-receive logs via email with the proper configuration.
+Simple and very flexible tool for development with .NET Core. Saves logs into a MySQL database.
 
 # Log Types in SimpLog
 | Type | Description |
@@ -17,7 +16,7 @@ receive logs via email with the proper configuration.
 
 | Features | Description |
 | ----- | ----- |
-| &#128218; Log into database | With SimpLog you can save logs into a database. It is possible to save it in MySql. Have in mind, that if the tables are not created, they will be created automatically in the database from the connection string in SimpLog:Database_Configuration:Connection_String |
+| &#128218; Log into database | With SimpLog.Databases.MySQL you can save logs into a database. It is possible to save it in MySql. Have in mind, that if the tables are not created, they will be created automatically in the database from the connection string in SimpLog:Database_Configuration:Connection_String |
 
 
 # &#128218; Database structure for logging into a database
@@ -27,6 +26,7 @@ You need two tables, no matter the database. The databases are as follows:
 | Database | Description |
 | ----- | ----- |
 | StoreLog | Saves what is the error and has connection with EmailLog if the row has been sent via email. |
+| EmailLog | Saves log if there has been sent any emails. |
 
 Scripts for creating tables:
 
@@ -95,7 +95,6 @@ N.B! You should create first the database. The fields will be created automatica
   {                              -> all of the below fields are optional
     "Database_Configuration": {             -> Database configurations
       "Connection_String": string,          -> Depending on database type, use the correct connection string.
-      "Global_Database_Type": string,       -> The type of a database. Set it to "MySql" N.B! Be carefull with spelling!
       "Global_Enabled_Save": bool           -> You can globally disable or enable saving into database. Default value is true
     },
     "LogType": {
